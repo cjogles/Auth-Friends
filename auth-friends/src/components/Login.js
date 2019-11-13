@@ -8,6 +8,8 @@ export const Login = (props) => {
         username: "",
         password: ""
     })
+
+    // new useState for isLoading?
     
     const handleChange = e => {
         setCredentials({
@@ -20,7 +22,6 @@ export const Login = (props) => {
         e.preventDefault();
         axiosWithAuth().post("http://localhost:5000/api/login",credentials)
           .then(res => {
-            console.log(res);
             localStorage.setItem('token', res.data.payload)
             setCredentials({ ...credentials});
             props.history.push('/friends')
